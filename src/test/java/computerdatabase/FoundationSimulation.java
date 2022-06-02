@@ -65,8 +65,7 @@ public class FoundationSimulation extends Simulation {
     .exec(
       http("index")
         .get("/")
-        .headers(headers_4)
-        .header("authorization","Bearer ${id_token}")
+        .headers(headers_0)
         .check(status().is(200))
     )
     .pause(9)
@@ -80,7 +79,7 @@ public class FoundationSimulation extends Simulation {
             .get("/api/account")
             .headers(headers_1)
             .check(status().is(401))
-            .check(bodyBytes().is(RawFileBody("io/gatling/demo/foundationsimulation/0001_response.dat")))
+            
         )
     )
     .pause(9)
