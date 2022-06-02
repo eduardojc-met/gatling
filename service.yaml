@@ -1,13 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: GATLING-RESULTS-test
+  name: gatlingresults-test-deployment
   namespace: develop
   uid: d84e7a93-ed08-4a36-a133-af79b3643210
   resourceVersion: '14675740'
   creationTimestamp: '2022-05-31T13:58:56Z'
   labels:
-    io.kompose.service: GATLING-RESULTS-test
+    io.kompose.service: gatlingresults-test-deployment
   annotations:
     kompose.cmd: kompose convert
     kompose.service.type: ClusterIP
@@ -50,7 +50,7 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    io.kompose.service: GATLING-RESULTS-test
+    io.kompose.service: gatlingresults-test-deployment
 
   type: ClusterIP
   sessionAffinity: None

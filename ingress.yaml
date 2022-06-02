@@ -1,18 +1,18 @@
 kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: GATLING-RESULTS-test
+  name: gatlingresults-test-deployment
   namespace: develop
   uid: fc846280-39a9-49c3-ba0a-21ec62edf01e
   resourceVersion: '14679104'
   generation: 1
   creationTimestamp: '2022-05-31T13:58:59Z'
   labels:
-    app.kubernetes.io/instance: GATLING-RESULTS-test
+    app.kubernetes.io/instance: gatlingresults-test-deployment
     app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: GATLING-RESULTS-test
-    helm.sh/chart: GATLING-RESULTS-test
-    run: GATLING-RESULTS-test
+    app.kubernetes.io/name: gatlingresults-test-deployment
+    helm.sh/chart: gatlingresults-test-deployment
+    run: gatlingresults-test-deployment
   annotations:
     
     kubernetes.io/ingress.class: public-iks-k8s-nginx
@@ -50,28 +50,28 @@ metadata:
 spec:
   tls:
     - hosts:
-        - GATLING-RESULTS-test.auto.public-cross.dev.scf-hq.com
+        - gatlingresults-test-deployment.auto.public-cross.dev.scf-hq.com
       secretName: scf-hq.com
   rules:
     - host: >-
-        GATLING-RESULTS-test.scfhq-publiccrossdev01-391a523e0203d3683790f242c9079785-0000.eu-de.containers.appdomain.cloud
+        gatlingresults-test-deployment.scfhq-publiccrossdev01-391a523e0203d3683790f242c9079785-0000.eu-de.containers.appdomain.cloud
       http:
         paths:
           - path: /
             pathType: ImplementationSpecific
             backend:
               service:
-                name: GATLING-RESULTS-test
+                name: gatlingresults-test-deployment
                 port:
                   number: 80
-    - host: GATLING-RESULTS-test.auto.public-cross.dev.scf-hq.com
+    - host: gatlingresults-test-deployment.auto.public-cross.dev.scf-hq.com
       http:
         paths:
           - path: /
             pathType: ImplementationSpecific
             backend:
               service:
-                name: GATLING-RESULTS-test
+                name: gatlingresults-test-deployment
                 port:
                   number: 80
 status:

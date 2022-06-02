@@ -11,9 +11,13 @@ spec:
     metadata:
       labels:
         app: nginx
+      imagePullSecrets:
+        - name: ibm-registry-apikey
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.8
+      - name: de.icr.io/devops-tools/gatlingresults-nginx
+        image: de.icr.io/devops-tools/gatlingresults-nginx
         ports:
         - containerPort: 80
+      imagePullSecrets:
+        - name: ibm-registry-apikey
