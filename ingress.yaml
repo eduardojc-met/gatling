@@ -1,0 +1,80 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: GATLING-RESULTS-test
+  namespace: develop
+  uid: fc846280-39a9-49c3-ba0a-21ec62edf01e
+  resourceVersion: '14679104'
+  generation: 1
+  creationTimestamp: '2022-05-31T13:58:59Z'
+  labels:
+    app.kubernetes.io/instance: GATLING-RESULTS-test
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: GATLING-RESULTS-test
+    helm.sh/chart: GATLING-RESULTS-test
+    run: GATLING-RESULTS-test
+  annotations:
+    
+    kubernetes.io/ingress.class: public-iks-k8s-nginx
+  managedFields:
+    - manager: dashboard
+      operation: Update
+      apiVersion: networking.k8s.io/v1
+      time: '2022-02-04T12:02:49Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubernetes.io/ingress.class: {}
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/managed-by: {}
+            f:app.kubernetes.io/name: {}
+            f:helm.sh/chart: {}
+            f:run: {}
+        f:spec:
+          f:rules: {}
+          f:tls: {}
+    - manager: nginx-ingress-controller
+      operation: Update
+      apiVersion: networking.k8s.io/v1
+      time: '2022-05-04T13:49:57Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      subresource: status
+spec:
+  tls:
+    - hosts:
+        - GATLING-RESULTS-test.auto.public-cross.dev.scf-hq.com
+      secretName: scf-hq.com
+  rules:
+    - host: >-
+        GATLING-RESULTS-test.scfhq-publiccrossdev01-391a523e0203d3683790f242c9079785-0000.eu-de.containers.appdomain.cloud
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: GATLING-RESULTS-test
+                port:
+                  number: 80
+    - host: GATLING-RESULTS-test.auto.public-cross.dev.scf-hq.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: GATLING-RESULTS-test
+                port:
+                  number: 80
+status:
+  loadBalancer:
+    ingress:
+      - hostname: e4b17b6a-eu-de.lb.appdomain.cloud
