@@ -4,7 +4,7 @@ metadata:
   name: gatlingresults-test-deployment
   namespace: develop
   uid: 23f546bd-1643-4783-8547-87957d954864
-  resourceVersion: '14792870'
+
   generation: 4
   creationTimestamp: '2022-06-01T10:55:24Z'
   labels:
