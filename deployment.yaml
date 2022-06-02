@@ -1,29 +1,178 @@
-apiVersion: apps/v1 # Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: gatlingresults-test-deployment
+  namespace: develop
+  uid: 23f546bd-1643-4783-8547-87957d954864
+  resourceVersion: '14792870'
+  generation: 4
+  creationTimestamp: '2022-06-01T10:55:24Z'
+  labels:
+    io.kompose.service: gatlingresults-test-deployment
+  annotations:
+    deployment.kubernetes.io/revision: '4'
+    kompose.cmd: kompose convert
+    kompose.service.type: ClusterIP
+    kompose.version: 1.26.0 (40646f47)
+  managedFields:
+    - manager: kubectl-client-side-apply
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-06-01T10:55:24Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kompose.cmd: {}
+            f:kompose.service.type: {}
+            f:kompose.version: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:last-commit-sha: {}
+            f:last-image-push-id: {}
+          f:labels:
+            .: {}
+            f:io.kompose.service: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:kompose.cmd: {}
+                f:kompose.service.type: {}
+                f:kompose.version: {}
+              f:labels:
+                .: {}
+                f:io.kompose.service: {}
+            f:spec:
+              f:containers:
+                k:{"name":"gatlingresults-test-deployment"}:
+                  .: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":9000,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:imagePullSecrets:
+                .: {}
+                k:{"name":"ibm-registry-apikey"}: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-06-01T13:33:06Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      subresource: status
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx
-  replicas: 2 
+      io.kompose.service: gatlingresults-test-deployment
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: nginx
-
+        io.kompose.service: gatlingresults-test-deployment
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.service.type: LoadBalancer
+        kompose.version: 1.26.0 (40646f47)
     spec:
       containers:
-      - name: de.icr.io/devops-tools/gatlingresults-nginx
-        image: de.icr.io/devops-tools/gatlingresults-nginx
-        ports:
-        - containerPort: 80
-        imagePullSecrets:
-          - name: ibm-registry-apikey
-
-
-
-
+        - name: gatlingresults-test-deployment
+          image: de.icr.io/devops-tools/gatlingresults-test-deployment
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources: {}
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: ibm-registry-apikey
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
 
 
 
