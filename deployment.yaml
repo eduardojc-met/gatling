@@ -153,7 +153,7 @@ spec:
     spec:
       containers:
         - name: gatlingresults-test-deployment
-          image: de.icr.io/devops-tools/gatlingresults-test-deployment
+          image: de.icr.io/devops-tools/gatlingresults-nginx
           ports:
             - containerPort: 80
               protocol: TCP
