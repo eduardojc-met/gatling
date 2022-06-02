@@ -1,0 +1,1 @@
+{"id":1,"login":"admin@localhost.es","firstName":"Administratorrr","lastName":"Administratorrr","email":"admin@localhost.es","imageUrl":null,"activated":true,"langKey":"es","createdBy":"system","createdDate":null,"lastModifiedBy":"admin@localhost.es","lastModifiedDate":"2022-06-01T13:40:24.568485Z","authorities":["ROLE_USER","ROLE_ADMIN"],"passwordExpirationMessage":null}

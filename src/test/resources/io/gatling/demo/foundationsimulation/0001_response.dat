@@ -1,0 +1,8 @@
+{
+  "type" : "https://www.jhipster.tech/problem/problem-with-message",
+  "title" : "Unauthorized",
+  "status" : 401,
+  "detail" : "Full authentication is required to access this resource",
+  "path" : "/api/account",
+  "message" : "error.http.401"
+}
